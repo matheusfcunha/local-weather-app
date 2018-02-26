@@ -1,0 +1,170 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.bolder-font {
+  font-weight: 600;
+}
+
+.font-opacity-darker {
+  color: hsl(0, 0%, 45%);
+}
+
+.font-opacity-lighter {
+  color: hsl(0, 0%, 18%);
+}
+
+
+.container {
+  width: 100%;
+}
+
+.no-margin-display-inline {
+  display: inline-block;
+  margin: 0;
+}
+
+.main-color {
+  color: #0072ff;
+}
+
+.link-style {
+  color: inherit;
+}
+
+
+/* ------------------------ HEADER ------------------------ */
+
+header {
+  color: #0090ff;
+  background-color: white;
+  height: auto;
+  padding: 10px;
+  font-size: .9rem;
+  border: 1px solid rgba(255, 255, 255, .5);
+}
+
+
+.location {
+  float: right;
+  margin: 0;
+}
+
+#city {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* ------------------------ Weather-Today ------------------------ */
+
+#weather-today {
+  color: white;
+  background: #00c6ff;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, .3);
+
+}
+
+#weather-today-heading {
+  font-size: .8rem;
+  margin: 0;
+  padding: 25px;
+}
+
+.weather-now {
+  font-size: 2rem;
+  margin-left: 20px;
+}
+
+.weather-today-info {
+  font-size: .8rem;
+  margin-top: 20px;
+  position: relative;
+  left: 12px;
+}
+
+.wti-margin {
+  margin-right: 20px;
+  margin-left: 4px;
+}
+
+.weather-today-content {
+  margin-bottom: 15px;
+}
+
+/* ------------------------ WEATHER-TODAY-HOURS  ------------------------ */
+
+#weather-today-hours {
+  color: white;
+  background: #00c6ff;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+  width: 100%;
+  font-size: .8rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+#weather-today-hours::-webkit-scrollbar { 
+    display: none;
+}
+
+.wth-box {
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.wth-margin {
+  margin-top: 15px;
+}
+
+/* ------------------------ FORECAST  ------------------------ */
+
+#forecast {
+  padding: 15px;
+}
+
+.forecast-box {
+  width: 100%;
+  font-size: .8rem;
+  margin-bottom: 25px;
+}
+
+.forecast-box-rightside {
+  float: right;
+  font-size: .9rem;
+  margin-left: 30px;
+  position: relative;
+  bottom: 8px;
+  width: 8%;
+
+}
+
+
+/* ------------------------ FOOTER  ------------------------ */
+
+
+#footer {
+  color: #0072ff;
+  width: 100%;
+  font-size: .9rem;
+  padding: 3px;
+
+}
