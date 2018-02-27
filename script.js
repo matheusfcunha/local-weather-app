@@ -13,8 +13,8 @@ $(document).ready(function() {
         navigator.geolocation.getCurrentPosition(function(position) {
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
-            weatherJsonLatLon = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&units=metric' + '&appid=' + apiKey;
-            forecastJsonLatLon = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric' + '&appid=' + apiKey;
+            weatherJsonLatLon = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&units=metric' + '&appid=' + apiKey;
+            forecastJsonLatLon = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric' + '&appid=' + apiKey;
             $.getJSON(weatherJsonLatLon, function(response) {
                 var city = response.name;
                 var timeToday = response.dt;
@@ -29,7 +29,6 @@ $(document).ready(function() {
                 changeContent(city, timeToday, weatherIconID, temperatureNow, weatherDescription, temperatureFeel, windSpeed, pressure, humidity, temperatureVariation);
             });
             $.getJSON(forecastJsonLatLon, function(response) {
-              console.log(response);
               $(".wth-box").remove();
                for (i = 0; i < 7; i++) {
                  $("#weather-today-hours").append('<div class="wth-box"><p class="bolder-font no-margin-display-inline forecast-hour">' + response.list[i].dt_txt.slice(11, 13) + '</p><br><i class="bolder-font wi wi-cloud wth-margin"></i><br><p class="bolder-font no-margin-display-inline wth-margin">' + Math.floor(response.list[i].main.temp) + '°</p></div>')
@@ -52,10 +51,8 @@ $(document).ready(function() {
 
                  if ((monthDay > currentDay || monthNumber > currentMonth) && hours == 12) {
                    forecastIcon = changeIcons(forecastIconID);
-                   console.log(forecastIcon);
                    var temp_max = Math.floor((response.list[i].main.temp_max));
                    var temp_min = Math.floor((response.list[i].main.temp_min));
-                   console.log(temp_max + ' ' + temp_min);
                    $("#forecast").append('<div class="forecast-box"><p class="no-margin-display-inline font-opacity-lighter">' + weekday + '</p><br><p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">' + month + ' ' + monthDay + '</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">' + temp_max + '°</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">' + temp_min + '°</p><i class="forecast-box-rightside '  + forecastIcon + ' ' + 'main-color"></i></div>')
 
                 };
