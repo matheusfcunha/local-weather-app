@@ -36,6 +36,14 @@ html, body {
   color: inherit;
 }
 
+#today-date {
+  font-style: normal;
+}
+
+#temperature-feel {
+  font-style: normal;
+}
+
 
 /* ------------------------ HEADER ------------------------ */
 
@@ -119,7 +127,7 @@ background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, F
   white-space: nowrap;
 }
 
-#weather-today-hours::-webkit-scrollbar { 
+#weather-today-hours::-webkit-scrollbar {
     display: none;
 }
 
@@ -145,6 +153,8 @@ background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, F
   width: 100%;
   font-size: .8rem;
   margin-bottom: 25px;
+  /* border-bottom: 1px solid;
+  border-bottom-color: rgb(201, 208, 218); */
 }
 
 .forecast-box-rightside {

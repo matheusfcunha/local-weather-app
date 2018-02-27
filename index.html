@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>Quote Book</title>
+    <title>Local Weather</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/weather-icons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -13,55 +13,60 @@
     <div id="container">
       <header>
         <i class="fas fa-cog"></i>
-        <p id="city" class="location">Zaporozhye</p>
+        <p id="city" class="location">Unknown</p>
         <i class="fas fa-map-marker-alt location"></i>
         <a class="link-style" href="https://github.com/matheusfcunha"><i style="margin-left: 5px;"class="fab fa-github"></i></a>
       </header>
       <main>
         <div id="weather-today">
           <div class="weather-today-content">
-            <p id="weather-today-heading">Wednesday, February 21<br>Today</p>
-            <i class="wi wi-cloud weather-now"></i><p class="weather-now no-margin-display-inline">-4°C</p>
-            <p style="font-size: .9rem;" class="weather-now no-margin-display-inline"><b class="bolder-font">Mainly Cloudy</b><br>Feels like -8°</p><br>
-            <i class="fas fa-location-arrow weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin"><b class="bolder-font">5</b>m/s</p>
-            <i class="fas fa-angle-double-down weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin"><b class="bolder-font">1014</b> hPa</p>
-            <i class="fas fa-tint weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin"><b class="bolder-font">74</b>%</p>
-            <i class="fas fa-align-center weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin bolder-font">-5°</p>
+            <p id="weather-today-heading"><i id="today-date">Wednesday, February 21</i><br>Today</p>
+            <i id="weatherIcon" class="wi wi-day-snow-wind weather-now"></i><p id="weather-now-temperature" class="weather-now no-margin-display-inline">-4°C</p>
+            <p style="font-size: .9rem;" class="weather-now no-margin-display-inline"><b id="weather-description" class="bolder-font">Mainly Cloudy</b><br>Feels like <i id="temperature-feel">-8°</i></p><br>
+            <i class="fas fa-location-arrow weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin"><b id="wind-speed" class="bolder-font">5</b>m/s</p>
+            <i class="fas fa-angle-double-down weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin"><b id="pressure" class="bolder-font">1014</b> hPa</p>
+            <i class="fas fa-tint weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin"><b id="humidity" class="bolder-font">74</b>%</p>
+            <i class="fas fa-align-center weather-today-info"></i><p id="temperature-variation" class="no-margin-display-inline weather-today-info wti-margin bolder-font">-5°</p>
           </div>
         </div>
         <div id="weather-today-hours">
-          <div class="wth-box">
-            <p class="bolder-font no-margin-display-inline">13</p><br>
+          <div class="bolder-font wth-box">
+            <p class="bolder-font no-margin-display-inline forecast-hour">13</p><br>
             <i class="bolder-font wi wi-cloud wth-margin"></i><br>
             <p class="bolder-font no-margin-display-inline wth-margin">-5°</p>
           </div>
           <div class="bolder-font wth-box">
-            <p class="bolder-font no-margin-display-inline">14</p><br>
+            <p class="bolder-font no-margin-display-inline forecast-hour">14</p><br>
             <i class="bolder-font wi wi-cloud wth-margin"></i><br>
             <p class="bolder-font no-margin-display-inline wth-margin">-4°</p>
           </div>
         <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline">15</p><br>
+          <p class="bolder-font no-margin-display-inline forecast-hour">15</p><br>
           <i class="bolder-font wi wi-cloud wth-margin"></i><br>
           <p class="bolder-font no-margin-display-inline wth-margin">-5°</p>
         </div>
         <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline">16</p><br>
+          <p class="bolder-font no-margin-display-inline forecast-hour">16</p><br>
           <i class="bolder-font wi wi-cloud wth-margin"></i><br>
           <p class="bolder-font no-margin-display-inline wth-margin">-7°</p>
         </div>
         <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline">17</p><br>
+          <p class="bolder-font no-margin-display-inline forecast-hour">17</p><br>
           <i class="bolder-font wi wi-cloud wth-margin"></i><br>
           <p class="bolder-font no-margin-display-inline wth-margin">-7°</p>
         </div>
         <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline">18</p><br>
+          <p class="bolder-font no-margin-display-inline forecast-hour">18</p><br>
           <i class="bolder-font wi wi-cloud wth-margin"></i><br>
           <p class="bolder-font no-margin-display-inline wth-margin">-11°</p>
         </div>
         <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline">19</p><br>
+          <p class="bolder-font no-margin-display-inline forecast-hour">19</p><br>
+          <i class="bolder-font wi wi-cloud wth-margin"></i><br>
+          <p class="bolder-font no-margin-display-inline wth-margin">5°</p>
+        </div>
+        <div class="bolder-font wth-box">
+          <p class="bolder-font no-margin-display-inline forecast-hour">19</p><br>
           <i class="bolder-font wi wi-cloud wth-margin"></i><br>
           <p class="bolder-font no-margin-display-inline wth-margin">5°</p>
         </div>
@@ -115,4 +120,11 @@
     </div>
   </body>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+
+
 </html>
