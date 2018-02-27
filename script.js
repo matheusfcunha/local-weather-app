@@ -15,11 +15,13 @@ $(document).ready(function() {
             longitude = position.coords.longitude;
             weatherJsonLatLon = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&units=metric' + '&appid=' + apiKey;
             forecastJsonLatLon = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric' + '&appid=' + apiKey;
-            $.getJSON(weatherJsonLatLon, function(response) {
+
+
+            $.getJSON(weatherJsonLatLon, function(response) { //Get weather and change page content.
                 var city = response.name;
                 var timeToday = response.dt;
                 var weatherIconID = response.weather[0].id;
-                var temperatureNow = response.main.temp;
+                var temperatureNow = Math.floor(response.main.temp);
                 var weatherDescription = response.weather[0].description;
                 var temperatureFeel = (Math.floor((Math.random() * 4) + 1)) + temperatureNow;
                 var windSpeed = response.wind.speed;
@@ -28,7 +30,9 @@ $(document).ready(function() {
                 var temperatureVariation = response.main.temp_max - response.main.temp_min;
                 changeContent(city, timeToday, weatherIconID, temperatureNow, weatherDescription, temperatureFeel, windSpeed, pressure, humidity, temperatureVariation);
             });
-            $.getJSON(forecastJsonLatLon, function(response) {
+
+
+            $.getJSON(forecastJsonLatLon, function(response) { //Get forecast and change page content.
               $(".wth-box").remove();
                for (i = 0; i < 7; i++) {
                  $("#weather-today-hours").append('<div class="wth-box"><p class="bolder-font no-margin-display-inline forecast-hour">' + response.list[i].dt_txt.slice(11, 13) + '</p><br><i class="bolder-font wi wi-cloud wth-margin"></i><br><p class="bolder-font no-margin-display-inline wth-margin">' + Math.floor(response.list[i].main.temp) + '°</p></div>')
@@ -47,13 +51,13 @@ $(document).ready(function() {
                  var monthNumber = date[5];
                  var currentMonth = date[6];
                  var forecastIconID = response.list[i].weather[0].id;
+                 var forecastDiv = document.getElementById("forecast");
 
-
-                 if ((monthDay > currentDay || monthNumber > currentMonth) && hours == 12) {
+                 if ((monthDay > currentDay || monthNumber > currentMonth) && hours == 12) { //Check next days forecast, get one by day at midday;
                    forecastIcon = changeIcons(forecastIconID);
-                   var temp_max = Math.floor((response.list[i].main.temp_max));
-                   var temp_min = Math.floor((response.list[i].main.temp_min));
-                   $("#forecast").append('<div class="forecast-box"><p class="no-margin-display-inline font-opacity-lighter">' + weekday + '</p><br><p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">' + month + ' ' + monthDay + '</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">' + temp_max + '°</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">' + temp_min + '°</p><i class="forecast-box-rightside '  + forecastIcon + ' ' + 'main-color"></i></div>')
+                   var temp_max = Math.floor(response.list[i].main.temp_max);
+                   var temp_min = Math.floor(response.list[i].main.temp_min);
+                   forecastDiv.insertAdjacentHTML('beforeend', '<div class="forecast-box"><p class="no-margin-display-inline font-opacity-lighter">' + weekday + '</p><br><p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">' + month + ' ' + monthDay + '</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">' + temp_max + '°</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">' + temp_min + '°</p><i class="forecast-box-rightside '  + forecastIcon + ' ' + 'main-color"></i></div>')
 
                 };
                };
