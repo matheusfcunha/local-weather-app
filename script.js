@@ -1,5 +1,3 @@
-// api key 58784daf90133de622f360c9371a6b40
-
 $(document).ready(function() {
 
     var latitude;
@@ -8,6 +6,47 @@ $(document).ready(function() {
     var weatherJsonLatLon;
     var forecastJsonLatLon;
 
+    $('#gear-container').click(function (){                    // open settings
+      $('header').animate({height:'200'});
+      $('#settings').addClass('show');
+      $('#settings').fadeTo( 3000, 1 );
+      $('#settings-header').css({'pointer-events' : 'all'});
+    });
+
+    $('#main').click(function(){                                 // close settings
+      closeSettings();
+    });
+
+    $('#city-search-button').click(function(){                        //search for city
+      var city = $('#city-form').val();
+      city = city.toLowerCase();
+      var weatherJsonCity = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric' + '&appid=' + apiKey;
+      var forecastJsonCity = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric' + '&appid=' + apiKey;
+      var unit = 'metric';
+      apiCall(weatherJsonCity, forecastJsonCity, unit);
+      closeSettings();
+    });
+
+    $('#temperature-button').click(function(){                  //temperature unit changer
+      var scale = $('#temperature-scale').val();
+      if (scale === 'fahrenheit') {
+        toFahrenheit();
+        closeSettings();
+      } else {
+        toCelsius();
+        closeSettings();
+      }
+      $('#temperature-scale').val('celsius')
+    });
+
+    $('.slider').click(function(){                                 //night mode switcher
+      $('#weather-today').toggleClass("nightmode-background");
+      $('#weather-today-hours').toggleClass("nightmode-background");
+      $('header').toggleClass("nightmode-color");
+      $('.forecast-box').children('i').toggleClass("nightmode-color");
+      $('.settings-icon').toggleClass("nightmode-background");
+    });
+
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -15,67 +54,81 @@ $(document).ready(function() {
             longitude = position.coords.longitude;
             weatherJsonLatLon = 'https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&units=metric' + '&appid=' + apiKey;
             forecastJsonLatLon = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + latitude + '&lon=' + longitude + '&units=metric' + '&appid=' + apiKey;
-            $.getJSON(weatherJsonLatLon, function(response) {
-                var city = response.name;
-                var timeToday = response.dt;
-                var weatherIconID = response.weather[0].id;
-                var temperatureNow = response.main.temp;
-                var weatherDescription = response.weather[0].description;
-                var temperatureFeel = (Math.floor((Math.random() * 4) + 1)) + temperatureNow;
-                var windSpeed = response.wind.speed;
-                var pressure = response.main.pressure;
-                var humidity = response.main.humidity;
-                var temperatureVariation = response.main.temp_max - response.main.temp_min;
-                changeContent(city, timeToday, weatherIconID, temperatureNow, weatherDescription, temperatureFeel, windSpeed, pressure, humidity, temperatureVariation);
-            });
-            $.getJSON(forecastJsonLatLon, function(response) {
-              $(".wth-box").remove();
-               for (i = 0; i < 7; i++) {
-                 var forecastIconID = response.list[i].weather[0].id;
-                 var forecastIcon = changeIcons(forecastIconID);
-                 $("#weather-today-hours").append('<div class="wth-box"><p class="bolder-font no-margin-display-inline forecast-hour">' + response.list[i].dt_txt.slice(11, 13) + '</p><br><i class="bolder-font ' + forecastIcon  + ' ' + 'wth-margin"></i><br><p class="bolder-font no-margin-display-inline wth-margin">' + Math.floor(response.list[i].main.temp) + '°</p></div>')
-               };
-
-               $(".forecast-box").remove();
-
-               for (i = 0; i < response.list.length; i++) {
-                 var date = getDates(response.list[i].dt_txt)
-                 date = date.split(" ");
-                 var weekday    = date[0];
-                 var month      = date[1];
-                 var monthDay   = date[2];
-                 var hours      = date[3];
-                 var currentDay = date[4];
-                 var monthNumber = date[5];
-                 var currentMonth = date[6];
-                 var forecastIconID = response.list[i].weather[0].id;
-
-
-                 if ((monthDay > currentDay || monthNumber > currentMonth) && hours == 12) {
-                   forecastIcon = changeIcons(forecastIconID);
-                   var temp_max = Math.floor((response.list[i].main.temp_max));
-                   var temp_min = Math.floor((response.list[i].main.temp_min));
-                   $("#forecast").append('<div class="forecast-box"><p class="no-margin-display-inline font-opacity-lighter">' + weekday + '</p><br><p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">' + month + ' ' + monthDay + '</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">' + temp_max + '°</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">' + temp_min + '°</p><i class="forecast-box-rightside '  + forecastIcon + ' ' + 'main-color"></i></div>')
-
-                };
-               };
-
-            });
+            unit = 'metric';
+            apiCall(weatherJsonLatLon, forecastJsonLatLon, unit);
+        },
+        function (error) {
+          if (error.code == error.PERMISSION_DENIED)
+          callNewYorkWeather();
         });
-    }
+     };
 
-    function changeContent(city, timeToday, weatherIconID, temperatureNow, weatherDescription, temperatureFeel, windSpeed, pressure, humidity, temperatureVariation) {
+
+    function apiCall(weatherApiType, forecastApiType, unit) {
+      $.getJSON(weatherApiType, function(response) {
+          var city = response.name;
+          var timeToday = response.dt;
+          var weatherIconID = response.weather[0].id;
+          var temperatureNow = Math.floor(response.main.temp);
+          var weatherDescription = response.weather[0].description;
+          var temperatureFeel = Math.floor((Math.random() * 4 + 1 + temperatureNow));
+          var windSpeed = response.wind.speed;
+          var pressure = response.main.pressure;
+          var humidity = response.main.humidity;
+          var temperatureVariation = response.main.temp_max - response.main.temp_min;
+          changeContent(city, timeToday, weatherIconID, temperatureNow, weatherDescription, temperatureFeel, windSpeed, pressure, humidity, temperatureVariation, unit);
+      })
+      .fail(function() {
+        callNewYorkWeather()
+        alert( "City not found, please try again!" );
+      });
+
+
+      $.getJSON(forecastApiType, function(response) {
+          $(".wth-box").remove();
+         for (i = 0; i < 7; i++) {
+           var forecastIconID = response.list[i].weather[0].id;
+           var forecastIcon = changeIcons(forecastIconID);
+           $("#weather-today-hours").append('<div class="wth-box"><p class="bolder-font no-margin-display-inline forecast-hour">' + response.list[i].dt_txt.slice(11, 13) + '</p><br><i class="bolder-font ' + forecastIcon  + ' ' + 'wth-margin"></i><br><p class="bolder-font no-margin-display-inline wth-margin">' + Math.floor(response.list[i].main.temp) + '°</p></div>')
+         };
+         $(".forecast-box").remove();
+         for (i = 0; i < response.list.length; i++) {
+           var date = getDates(response.list[i].dt_txt)
+           date = date.split(" ");
+           var weekday    = date[0];
+           var month      = date[1];
+           var monthDay   = date[2];
+           var hours      = date[3];
+           var currentDay = date[4];
+           var monthNumber = date[5];
+           var currentMonth = date[6];
+           var forecastIconID = response.list[i].weather[0].id;
+           if ((monthDay > currentDay || monthNumber > currentMonth) && hours == 12) {
+              forecastIcon = changeIcons(forecastIconID);
+              var temp_max = Math.floor((response.list[i].main.temp_max));
+              var temp_min = Math.floor((response.list[i].main.temp_min));
+              $("#forecast").append('<div class="forecast-box"><p class="no-margin-display-inline font-opacity-lighter">' + weekday + '</p><br><p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">' + month + ' ' + monthDay + '</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">' + temp_max + '°</p><p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">' + temp_min + '°</p><i class="forecast-box-rightside '  + forecastIcon + ' ' + 'main-color"></i></div>')
+            };
+         };
+
+      });
+    };
+
+    function changeContent(city, timeToday, weatherIconID, temperatureNow, weatherDescription, temperatureFeel, windSpeed, pressure, humidity, temperatureVariation, unit) {
       $("#city").text(city);                                                        // Changes the city name.
       $("#today-date").text(timeConverter(timeToday));                              // Changes the 'Today' date on the header.
       $("#weatherIcon").attr('class', changeIcons(weatherIconID) + ' weather-now'); // Changes the current weather icon.
-      $("#weather-now-temperature").text(temperatureNow + '°C');                    // Changes the temperature to the current.
+      if (unit === 'imperial') {                                                    // Check for Fahrenheit.
+        $("#weather-now-temperature").text(temperatureNow + '°F');                  // Changes the temperature to the current.
+      } else {
+        $("#weather-now-temperature").text(temperatureNow + '°C');                  // Changes the temperature to the current.
+      }
       $("#weather-description").text(titleCase(weatherDescription));                // Changes the weather description.
       $("#temperature-feel").text(temperatureFeel + '°')                            // Changes the text 'Feels like'.
       $("#wind-speed").text(windSpeed);                                             // Changes the wind speed.
       $("#pressure").text(pressure);                                                // Changes the temperature pressure.
       $("#humidity").text(humidity);                                                // Changes the temperature humidity.
       $("#temperature-variation").text(temperatureVariation + '°');                 // Changes the temperature variation, temp_max - temp_min.
-
     };
 
     function getDates(date) {
@@ -94,7 +147,7 @@ $(document).ready(function() {
       var month = months[monthNumber];
       var dayOfWeek = weekdays[dayOfWeekNumber];
       return dayOfWeek + ' ' + month + ' ' + dayOfMonth + ' ' + hours + ' ' + currentDay + ' ' + monthNumber + ' ' + currentMonth;
-    }
+    };
 
    function changeIcons (weatherIconID) {
      var hour = (new Date).getHours();
@@ -159,6 +212,36 @@ $(document).ready(function() {
         var time = weekday + ', ' + month + ' ' + date;
         return time;
     };
+
+    function toFahrenheit() {
+      var city = $('#city').text();
+      var weatherJsonCity = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial' + '&appid=' + apiKey;
+      var forecastJsonCity = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial' + '&appid=' + apiKey;
+      var unit = 'imperial';
+      apiCall(weatherJsonCity, forecastJsonCity, unit);
+    };
+
+    function toCelsius() {
+      var city = $('#city').text();
+      var weatherJsonCity = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric' + '&appid=' + apiKey;
+      var forecastJsonCity = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric' + '&appid=' + apiKey;
+      var unit = 'metric';
+      apiCall(weatherJsonCity, forecastJsonCity, unit);
+    };
+
+    function closeSettings() {
+      $('header').animate({height: '20'});
+      $('#settings').removeClass('show');
+      $('#settings').fadeTo( 1000, 0 );
+      $('#settings-header').css({'pointer-events' : 'none'});
+    };
+
+    function callNewYorkWeather() {
+      var weatherJsonNewYork = 'https://api.openweathermap.org/data/2.5/weather?q=New York&units=metric&appid=' + apiKey;
+      var forecastJsonNewYork = 'https://api.openweathermap.org/data/2.5/forecast?q=New York&units=metric&appid=' + apiKey;
+      var unit = 'metric'
+      apiCall(weatherJsonNewYork, forecastJsonNewYork, unit);
+    }
 
 
 });

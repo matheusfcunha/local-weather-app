@@ -1,130 +1,156 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Local Weather</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/weather-icons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="container">
-      <header>
-        <i class="fas fa-cog"></i>
-        <p id="city" class="location">Unknown</p>
-        <i class="fas fa-map-marker-alt location"></i>
-        <a class="link-style" href="https://github.com/matheusfcunha"><i style="margin-left: 5px;"class="fab fa-github"></i></a>
-      </header>
-      <main>
-        <div id="weather-today">
-          <div class="weather-today-content">
-            <p id="weather-today-heading"><i id="today-date">Wednesday, February 21</i><br>Today</p>
-            <i id="weatherIcon" class="wi wi-day-snow-wind weather-now"></i><p id="weather-now-temperature" class="weather-now no-margin-display-inline">-4°C</p>
-            <p style="font-size: .9rem;" class="weather-now no-margin-display-inline"><b id="weather-description" class="bolder-font">Mainly Cloudy</b><br>Feels like <i id="temperature-feel">-8°</i></p><br>
-            <i class="fas fa-location-arrow weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin"><b id="wind-speed" class="bolder-font">5</b>m/s</p>
-            <i class="fas fa-angle-double-down weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin"><b id="pressure" class="bolder-font">1014</b> hPa</p>
-            <i class="fas fa-tint weather-today-info"></i><p class="no-margin-display-inline weather-today-info wti-margin"><b id="humidity" class="bolder-font">74</b>%</p>
-            <i class="fas fa-align-center weather-today-info"></i><p id="temperature-variation" class="no-margin-display-inline weather-today-info wti-margin bolder-font">-5°</p>
-          </div>
-        </div>
-        <div id="weather-today-hours">
-          <div class="bolder-font wth-box">
-            <p class="bolder-font no-margin-display-inline forecast-hour">13</p><br>
-            <i class="bolder-font wi wi-cloud wth-margin"></i><br>
-            <p class="bolder-font no-margin-display-inline wth-margin">-5°</p>
-          </div>
-          <div class="bolder-font wth-box">
-            <p class="bolder-font no-margin-display-inline forecast-hour">14</p><br>
-            <i class="bolder-font wi wi-cloud wth-margin"></i><br>
-            <p class="bolder-font no-margin-display-inline wth-margin">-4°</p>
-          </div>
-        <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline forecast-hour">15</p><br>
-          <i class="bolder-font wi wi-cloud wth-margin"></i><br>
-          <p class="bolder-font no-margin-display-inline wth-margin">-5°</p>
-        </div>
-        <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline forecast-hour">16</p><br>
-          <i class="bolder-font wi wi-cloud wth-margin"></i><br>
-          <p class="bolder-font no-margin-display-inline wth-margin">-7°</p>
-        </div>
-        <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline forecast-hour">17</p><br>
-          <i class="bolder-font wi wi-cloud wth-margin"></i><br>
-          <p class="bolder-font no-margin-display-inline wth-margin">-7°</p>
-        </div>
-        <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline forecast-hour">18</p><br>
-          <i class="bolder-font wi wi-cloud wth-margin"></i><br>
-          <p class="bolder-font no-margin-display-inline wth-margin">-11°</p>
-        </div>
-        <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline forecast-hour">19</p><br>
-          <i class="bolder-font wi wi-cloud wth-margin"></i><br>
-          <p class="bolder-font no-margin-display-inline wth-margin">5°</p>
-        </div>
-        <div class="bolder-font wth-box">
-          <p class="bolder-font no-margin-display-inline forecast-hour">19</p><br>
-          <i class="bolder-font wi wi-cloud wth-margin"></i><br>
-          <p class="bolder-font no-margin-display-inline wth-margin">5°</p>
-        </div>
-      </div>
-     </div>
-     <div id="forecast">
-       <div class="forecast-box">
-         <p class="no-margin-display-inline font-opacity-lighter">Thursday</p><br>
-         <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 22</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-12°</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">+1°</p>
-         <i class="forecast-box-rightside wi wi-day-sunny main-color"></i>
-       </div>
-       <div class="forecast-box">
-         <p class="no-margin-display-inline font-opacity-lighter">Thursday</p><br>
-         <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 22</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-13°</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">0°</p>
-         <i class="forecast-box-rightside wi wi-cloud main-color"></i>
-       </div>
-       <div class="forecast-box">
-         <p class="no-margin-display-inline font-opacity-lighter">Thursday</p><br>
-         <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 22</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-16°</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">-3°</p>
-         <i class="forecast-box-rightside wi wi-cloud main-color"></i>
-       </div>
-       <div class="forecast-box">
-         <p class="no-margin-display-inline font-opacity-lighter">Thursday</p><br>
-         <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 22</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-12°</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">-1°</p>
-         <i class="forecast-box-rightside wi wi-cloud main-color"></i>
-       </div>
-       <div class="forecast-box">
-         <p class="no-margin-display-inline font-opacity-lighter">Thursday</p><br>
-         <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 22</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-12°</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">+1°</p>
-         <i class="forecast-box-rightside wi wi-cloud main-color"></i>
-       </div>
-       <div class="forecast-box">
-         <p class="no-margin-display-inline font-opacity-lighter">Thursday</p><br>
-         <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 22</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-12°</p>
-         <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">+1°</p>
-         <i class="forecast-box-rightside wi wi-cloud main-color"></i>
-       </div>
-     </div>
-      </main>
+        <header class="header">
+            <div id="gear-container" class="no-margin-display-inline">
+                <i id="gear-button" class="pointer fas fa-cog"></i>
+            </div>
+            <p id="city" class="location">Unknown</p>
+            <i class="fas fa-map-marker-alt location"></i>
+            <a class="link-style" href="https://github.com/matheusfcunha"><i style="margin-left: 5px;"class="fab fa-github"></i></a>
+            <div id="settings" class="sub-nav">
+                <div id="settings-header">
+                    <label class="settings-icon" for="city"><i class="far fa-compass"></i></label>
+                    <input type="text" name="name" id="city-form" placeholder="City" required="">
+                    <label id="city-search-button" class="settings-icon arrow-button" for="city"><i class="fas fa-arrow-right"></i></label><br>
+
+
+                    <label class="settings-icon" for="temperature"><i class="wi wi-thermometer"></i></label>
+                    <select id="temperature-scale" name="temperature">
+              <option value="celsius" selected>°C Celsius </option>
+              <option value="fahrenheit">°F Fahrenheit</option>
+            </select>
+                    <label id="temperature-button" class="settings-icon arrow-button" for="city"><i class="fas fa-arrow-right"></i></label>
+                    <br>
+                    <p style="margin-top: 10px; " class="no-margin-display-inline">Night Mode</p>
+                    <label id="nightmode-switch" class="switch">
+              <input type="checkbox" name="nightmode" value="nightmode-on">
+              <span class="slider round"></span>
+            </label>
+                </div>
+            </div>
+        </header>
+        <main id="main">
+            <div id="weather-today" class="none">
+                <div class="weather-today-content">
+                    <p id="weather-today-heading"><i id="today-date">Wednesday, January 21</i><br>Today</p>
+                    <i id="weatherIcon" class="wi wi-day-snow-wind weather-now"></i>
+                    <p id="weather-now-temperature" class="weather-now no-margin-display-inline">-2°C</p>
+                    <p style="font-size: .9rem;" class="weather-now no-margin-display-inline"><b id="weather-description" class="bolder-font">Mainly Cloudy</b><br>Feels like <i id="temperature-feel">-6°</i></p><br>
+                    <i class="fas fa-location-arrow weather-today-info"></i>
+                    <p class="no-margin-display-inline weather-today-info wti-margin"><b id="wind-speed" class="bolder-font">4</b>m/s</p>
+                    <i class="fas fa-angle-double-down weather-today-info"></i>
+                    <p class="no-margin-display-inline weather-today-info wti-margin"><b id="pressure" class="bolder-font">1012</b> hPa</p>
+                    <i class="fas fa-tint weather-today-info"></i>
+                    <p class="no-margin-display-inline weather-today-info wti-margin"><b id="humidity" class="bolder-font">83</b>%</p>
+                    <i class="fas fa-align-center weather-today-info"></i>
+                    <p id="temperature-variation" class="no-margin-display-inline weather-today-info wti-margin bolder-font">2°</p>
+                </div>
+            </div>
+            <div id="weather-today-hours">
+                <div class="bolder-font wth-box">
+                    <p class="bolder-font no-margin-display-inline forecast-hour">13</p><br>
+                    <i class="bolder-font wi wi-cloud wth-margin"></i><br>
+                    <p class="bolder-font no-margin-display-inline wth-margin">-5°</p>
+                </div>
+                <div class="bolder-font wth-box">
+                    <p class="bolder-font no-margin-display-inline forecast-hour">14</p><br>
+                    <i class="bolder-font wi wi-cloud wth-margin"></i><br>
+                    <p class="bolder-font no-margin-display-inline wth-margin">-4°</p>
+                </div>
+                <div class="bolder-font wth-box">
+                    <p class="bolder-font no-margin-display-inline forecast-hour">15</p><br>
+                    <i class="bolder-font wi wi-cloud wth-margin"></i><br>
+                    <p class="bolder-font no-margin-display-inline wth-margin">-5°</p>
+                </div>
+                <div class="bolder-font wth-box">
+                    <p class="bolder-font no-margin-display-inline forecast-hour">16</p><br>
+                    <i class="bolder-font wi wi-cloud wth-margin"></i><br>
+                    <p class="bolder-font no-margin-display-inline wth-margin">-7°</p>
+                </div>
+                <div class="bolder-font wth-box">
+                    <p class="bolder-font no-margin-display-inline forecast-hour">17</p><br>
+                    <i class="bolder-font wi wi-cloud wth-margin"></i><br>
+                    <p class="bolder-font no-margin-display-inline wth-margin">-7°</p>
+                </div>
+                <div class="bolder-font wth-box">
+                    <p class="bolder-font no-margin-display-inline forecast-hour">18</p><br>
+                    <i class="bolder-font wi wi-cloud wth-margin"></i><br>
+                    <p class="bolder-font no-margin-display-inline wth-margin">-11°</p>
+                </div>
+                <div class="bolder-font wth-box">
+                    <p class="bolder-font no-margin-display-inline forecast-hour">19</p><br>
+                    <i class="bolder-font wi wi-cloud wth-margin"></i><br>
+                    <p class="bolder-font no-margin-display-inline wth-margin">5°</p>
+                </div>
+                <div class="bolder-font wth-box">
+                    <p class="bolder-font no-margin-display-inline forecast-hour">19</p><br>
+                    <i class="bolder-font wi wi-cloud wth-margin"></i><br>
+                    <p class="bolder-font no-margin-display-inline wth-margin">5°</p>
+                </div>
+            </div>
     </div>
-  </body>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <script src="script.js"></script>
+    <div id="forecast">
+        <div class="forecast-box">
+            <p class="no-margin-display-inline font-opacity-lighter">Thursday</p><br>
+            <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 23</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-12°</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">+1°</p>
+            <i class="forecast-box-rightside wi wi-day-sunny main-color"></i>
+        </div>
+        <div class="forecast-box">
+            <p class="no-margin-display-inline font-opacity-lighter">Friday</p><br>
+            <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 24</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-13°</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">0°</p>
+            <i class="forecast-box-rightside wi wi-cloud main-color"></i>
+        </div>
+        <div class="forecast-box">
+            <p class="no-margin-display-inline font-opacity-lighter">Saturday</p><br>
+            <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 25</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-16°</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">-3°</p>
+            <i class="forecast-box-rightside wi wi-cloud main-color"></i>
+        </div>
+        <div class="forecast-box">
+            <p class="no-margin-display-inline font-opacity-lighter">Sunday</p><br>
+            <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 26</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-12°</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">-1°</p>
+            <i class="forecast-box-rightside wi wi-cloud main-color"></i>
+        </div>
+        <div class="forecast-box">
+            <p class="no-margin-display-inline font-opacity-lighter">Monday</p><br>
+            <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 27</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-12°</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">+1°</p>
+            <i class="forecast-box-rightside wi wi-cloud main-color"></i>
+        </div>
+        <div class="forecast-box">
+            <p class="no-margin-display-inline font-opacity-lighter">Tuesday</p><br>
+            <p style="font-size: .6rem;" class="no-margin-display-inline font-opacity-darker">February 28</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-darker">-12°</p>
+            <p class="forecast-box-rightside no-margin-display-inline font-opacity-lighter">+1°</p>
+            <i class="forecast-box-rightside wi wi-cloud main-color"></i>
+        </div>
+    </div>
+    </div>
+    </main>
+</body>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="script.js"></script>
 
 
 </html>

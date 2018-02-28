@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-size: 20px;
+  font-size: 17.5px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
 }
@@ -29,7 +29,7 @@ html, body {
 }
 
 .main-color {
-  color: #0072ff;
+  color: #2f92d8;
 }
 
 .link-style {
@@ -45,17 +45,92 @@ html, body {
 }
 
 
+.pointer:hover {
+  cursor: pointer;
+}
+
+.nightmode-background {
+  background-image: linear-gradient(to right, #0c2745, #11345a, #16416f, #1c4e86, #225c9d) !important ;
+}
+
+.nightmode-color {
+  color: #225C9D !important ;
+}
+
 /* ------------------------ HEADER ------------------------ */
 
 header {
-  color: #0090ff;
+  color: #2f92d8;
   background-color: white;
   height: auto;
-  padding: 10px;
-  font-size: .9rem;
+  padding: 11px;
+  font-size: 1rem;
   border: 1px solid rgba(255, 255, 255, .5);
+  position: relative;
+  -webkit-transition: 2s ease-in-out;
+  -moz-transition: 2s ease-in-out;
+  -o-transition: 2s ease-in-out;
+  transition: 2s ease-in-out;
 }
 
+
+#settings {
+  display: none;
+  opacity: 0;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 1rem;
+  border-top: 1px solid gray;
+}
+
+#settings-header {
+  margin-top: 10px;
+  pointer-events: none;
+}
+
+.settings-icon {
+  color: white;
+  font-size: 16px;
+  background-color: #2f92d8;
+  border-radius: 4px;
+  border-radius: 4px 0px 0px 4px/4px 0px 0px 4px;
+  display: inline-block;
+  width: 30px;
+  padding: 8px 0px 10px 15px;
+}
+
+input[type=text], select {
+  width: 200px;
+  height: 33px;
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  border: solid 1px #cbc9c9;
+  margin-left: -5px;
+  padding-left: 10px;
+  border-radius: 0;
+  margin-bottom: 15px;
+
+}
+
+#temperature-scale {
+  width: 212px;
+  height: 37px;
+  background-color: white;
+  color: gray;
+}
+
+
+.show {display: block !important;}
+
+#gear-button {
+  -webkit-transition: 2s ease-in-out;
+  -moz-transition: 2s ease-in-out;
+  -o-transition: 2s ease-in-out;
+  transition: 2s ease-in-out;
+}
+
+#gear-button:hover {
+  transform: rotate(360deg);
+}
 
 .location {
   float: right;
@@ -67,16 +142,95 @@ header {
   margin-right: 10px;
 }
 
+.arrow-button {
+  position: relative;
+  right: 5px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: #5cb85c;
+}
+
+.arrow-button:hover {
+  cursor: pointer;
+  background-color: #4cae4c;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+#nightmode-switch {
+  position: absolute;
+  margin-left: 15px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #5cb85c;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 /* ------------------------ Weather-Today ------------------------ */
 
 #weather-today {
+  line-height: 120%;
   color: white;
-  background: #00c6ff;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-  width: 100%;
+  /* background: #00c6ff;  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #7FB0E7;
+  background-image: linear-gradient(to right, #8cb9eb, #87b9eb, #81b9ec, #7bbaec, #75baec);
   text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, .3);
 
@@ -112,11 +266,13 @@ background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, F
 /* ------------------------ WEATHER-TODAY-HOURS  ------------------------ */
 
 #weather-today-hours {
+  text-align: center;
   color: white;
-  background: #00c6ff;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  /* background: #00c6ff;  /* fallback for old browsers */
+  /* background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+  /* background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #98CDEE;
+  background-image: linear-gradient(to right, #92beed, #93c2ee, #94c6ee, #96c9ee, #99cdee);
 
 
 
