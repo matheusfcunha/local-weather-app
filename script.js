@@ -75,7 +75,7 @@ $(document).ready(function() {
           var windSpeed = response.wind.speed;
           var pressure = response.main.pressure;
           var humidity = response.main.humidity;
-          var temperatureVariation = response.main.temp_max - response.main.temp_min;
+          var temperatureVariation = Math.floor(response.main.temp_max - response.main.temp_min);
           changeContent(city, timeToday, weatherIconID, temperatureNow, weatherDescription, temperatureFeel, windSpeed, pressure, humidity, temperatureVariation, unit);
       })
       .fail(function() {
