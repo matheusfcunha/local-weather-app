@@ -97,11 +97,11 @@ $(document).ready(function() {
            date = date.split(" ");
            var weekday    = date[0];
            var month      = date[1];
-           var monthDay   = date[2];
-           var hours      = date[3];
-           var currentDay = date[4];
-           var monthNumber = date[5];
-           var currentMonth = date[6];
+           var monthDay   = Number(date[2]);
+           var hours      = Number(date[3]);
+           var currentDay = Number(date[4]);
+           var monthNumber = Number(date[5]);
+           var currentMonth = Number(date[6]);
            var forecastIconID = response.list[i].weather[0].id;
            if ((monthDay > currentDay || monthNumber > currentMonth) && hours == 12) {
               forecastIcon = changeIcons(forecastIconID);
