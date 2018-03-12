@@ -132,7 +132,8 @@ $(document).ready(function() {
     };
 
     function getDates(date) {
-      var date = new Date(date);
+      date = date.split(/[\s-:]+/);
+      var date = new Date(date[0], date[1]-1, date[2], date[3]);
       var dayOfWeekNumber = date.getDay();
       var monthNumber = date.getMonth();
       var dayOfMonth = date.getDate();
